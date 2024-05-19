@@ -1,0 +1,63 @@
+.videoBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.logoContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.logo {
+    max-width: 100%;
+    max-height: 100%;
+    padding: 0.5rem;
+    background-color: white;
+    border-radius: 0.2rem;
+}
+
+.buttonContainer {
+    position: absolute;
+    top: calc(50% + 100px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #dde124;
+    color: #2a2a2a;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+.button:hover {
+    background-color: #6e7002;
+}
