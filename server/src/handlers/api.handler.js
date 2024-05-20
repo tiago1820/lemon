@@ -33,7 +33,6 @@ export class APIHandler {
     getActividad = async (operacionId) => {
         try {
             const result = await ActividadesIngresadas.findOne({
-                attributes: ["id"],
                 raw: true,
                 where: { operacionId },
                 include: [{
@@ -41,6 +40,7 @@ export class APIHandler {
                     attributes: ["codigo", "descripcion"]
                 }]
             });
+            if (!result) return null;
             return result;
         } catch (error) {
             throw new Error("Error loading actividad: " + error.message);
@@ -50,7 +50,6 @@ export class APIHandler {
     getCaracter = async (operacionId) => {
         try {
             const result = await TitularesIngresados.findOne({
-                attributes: ["id"],
                 raw: true,
                 where: { operacionId },
                 include: [{
@@ -58,6 +57,7 @@ export class APIHandler {
                     attributes: ["caracter"]
                 }]
             });
+            if (!result) return null;
             return result;
         } catch (error) {
             throw new Error("Error loading caracter: " + error.message);
@@ -69,7 +69,9 @@ export class APIHandler {
             const result = await CondicionTributaria.findOne({
                 attributes: ["condicion"],
                 raw: true,
+                where: { id: condicionId }
             });
+            if (!result) return null;
             return result;
         } catch (error) {
             throw new Error("Error loading condicion: " + error.message);

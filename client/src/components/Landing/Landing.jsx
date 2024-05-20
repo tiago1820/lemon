@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import video from "../assets/video.mp4";
-import logo from "../assets/image.png";
+import video from "../../assets/video.mp4";
+import logo from "../../assets/image.png";
 import styles from "./Landing.module.css";
 
 export const Landing = () => {

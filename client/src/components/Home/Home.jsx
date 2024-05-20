@@ -1,22 +1,23 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useFetchData } from "../../hooks/useFetchData";
+import loadingGif from "../../assets/loading.gif";
+import { useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
 
 export const Home = () => {
-    const [data, setData] = useState({});
+    const { data, loading, error } = useFetchData();
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const url = `http://localhost:3000/api`;
-                const response = await axios.get(url);
-                setData(response.data);
-            } catch (error) {
-                console.error("Error fetching data: ", error);
-            }
-        }
-        fetchData();
-    }, []);
+    if (loading) {
+        return (
+            <div className={styles.loadingContainer}>
+                <img className={styles.loading} src={loadingGif} alt="Loading..." />
+            </div>
+        );
+    }
+
+    if (error) {
+        navigate("/NotFound");
+    };
 
     return (
         <div className={styles.container}>

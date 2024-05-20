@@ -14,8 +14,8 @@ export class APIController {
                 const formattedData = await this.formatData(obj);
                 results.push(formattedData);
             }
-            const info = { count: results.length }
-            return res.status(200).json({ info, results });
+            const count = results.length;
+            return res.status(200).json({ count, results });
         } catch (error) {
             return res.status(500).json({ error: "Internal server error." });
         }
@@ -24,11 +24,11 @@ export class APIController {
     formatData = async (obj) => {
         const telefono = { tipo: obj.tipoTelefono, numero: obj.telefono };
         obj.telefono = telefono;
+        delete obj.tipoTelefono;
 
         const actividad = await this.handler.getActividad(obj.id);
         const { "TodasActividade.codigo": codigo, "TodasActividade.descripcion": descripcion } = actividad;
         obj.actividad = { codigo, descripcion };
-        delete obj.tipoTelefono;
 
         const tipoCaracter = await this.handler.getCaracter(obj.id);
         const { "TiposDeCaractere.caracter": caracter } = tipoCaracter;

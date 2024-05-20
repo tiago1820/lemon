@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Landing } from "./components/Landing";
-import { Home } from "./components/Home";
+import { Landing, Home, NotFound } from "../src/components";
 
 export const App = () => {
   return (
@@ -8,6 +7,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/NotFound" element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   )
