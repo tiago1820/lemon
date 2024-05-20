@@ -41,9 +41,13 @@ export const Home = () => {
                                 <td>{item.cuitRepresentado}</td>
                                 <td>{item.domicilio}</td>
                                 <td>{`${item.telefono.tipo} - ${item.telefono.numero}`}</td>
-                                <td>{`${item.actividad.codigo} - ${item.actividad.descripcion}`}</td>
-                                <td>{item.caracter}</td>
-                                <td>{item.condicion}</td>
+                                <td>
+                                    {item.actividad.codigo && item.actividad.descripcion
+                                        ? `${item.actividad.codigo} - ${item.actividad.descripcion}`
+                                        : 'Actividad no definida'}
+                                </td>
+                                <td>{item.caracter || 'Carácter no definido'}</td>
+                                <td>{item.condicion || 'Condición no definida'}</td>
                             </tr>
                         ))}
                     </tbody>

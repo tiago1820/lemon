@@ -20,7 +20,8 @@ export class APIHandler {
                     "domicilio",
                     "telefono",
                     "tipoTelefono",
-                    "condicionId"],
+                    "condicionId"
+                ],
                 order: [["fechaOperacion", "ASC"]],
                 raw: true
             });
@@ -40,7 +41,6 @@ export class APIHandler {
                     attributes: ["codigo", "descripcion"]
                 }]
             });
-            if (!result) return null;
             return result;
         } catch (error) {
             throw new Error("Error loading actividad: " + error.message);
@@ -57,7 +57,6 @@ export class APIHandler {
                     attributes: ["caracter"]
                 }]
             });
-            if (!result) return null;
             return result;
         } catch (error) {
             throw new Error("Error loading caracter: " + error.message);
@@ -71,7 +70,6 @@ export class APIHandler {
                 raw: true,
                 where: { id: condicionId }
             });
-            if (!result) return null;
             return result;
         } catch (error) {
             throw new Error("Error loading condicion: " + error.message);
