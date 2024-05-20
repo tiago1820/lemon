@@ -14,7 +14,6 @@ export const useFetchData = () => {
                 setData(response.data);
                 setLoading(false);
             } catch (error) {
-                console.log("Error fetching data: ", error);
                 setError(error);
                 setLoading(false);
             }

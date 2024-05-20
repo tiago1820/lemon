@@ -13,7 +13,6 @@ export class APIController {
             const count = results.length;
             return res.status(200).json({ count, results });
         } catch (error) {
-            console.log(error);
             return res.status(500).json({ error: "Internal server error." });
         }
     }
